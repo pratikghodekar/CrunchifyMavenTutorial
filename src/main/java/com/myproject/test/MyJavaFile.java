@@ -1,4 +1,4 @@
-package com.myproject.test
+package com.myproject.test;
 
 class MyJavaFile
 {
