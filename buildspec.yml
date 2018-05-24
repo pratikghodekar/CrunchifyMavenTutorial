@@ -11,3 +11,4 @@ phases:
 artifacts:
   files:
     - target/CrunchifyMavenTutorial.war
+  discard-paths: yes
