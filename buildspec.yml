@@ -10,5 +10,5 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - target/CrunchifyMavenTutorial.war
+    - target/CrunchifyMavenTutorial.tar.gz
   discard-paths: yes
