@@ -3,6 +3,7 @@
 		<format>tar.gz</format>
 	</formats>
 	<id>CrunchifyMavenTutorial</id>
+	<includeBaseDirectory>false</includeBaseDirectory>
 	<fileSets>
 		<fileSet>
 			<directory>scripts</directory>
