@@ -23,4 +23,24 @@
   <build>
     <finalName>CrunchifyMavenTutorial</finalName>
   </build>
+  <plugins>
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-assembly-plugin</artifactId>
+		<configuration>
+		<appendAssemblyId>false</appendAssemblyId>
+			<descriptors>
+				<descriptor>src/main/resources/distribution/package-distribution.xml</descriptor>
+			</descriptors>
+		</configuration>
+		<executions>
+			<execution>
+				<phase>package</phase>
+				<goals>
+					<goal>single</goal>
+				</goals>
+			</execution>
+		</executions>
+	</plugin>
+  </plugins>
 </project>
