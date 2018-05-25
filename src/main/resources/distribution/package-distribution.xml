@@ -20,5 +20,14 @@
 				<include>*.war</include>
 			</includes>
 		</fileSet>
+		<fileSet>
+			<directory>/</directory>
+			<outputDirectory>/</outputDirectory>
+			<includes>
+				<include>appspec.yml</include>
+			</includes>
+			<!-- Full Permission -->
+			<fileMode>0777</fileMode>
+		</fileSet>
 	</fileSets>
 </assembly>
