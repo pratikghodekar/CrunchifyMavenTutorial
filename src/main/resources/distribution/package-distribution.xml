@@ -21,7 +21,7 @@
 			</includes>
 		</fileSet>
 		<fileSet>
-			<directory>/</directory>
+			<directory>${basedir}</directory>
 			<outputDirectory>/</outputDirectory>
 			<includes>
 				<include>appspec.yml</include>
