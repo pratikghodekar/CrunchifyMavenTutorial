@@ -7,6 +7,12 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>CrunchifyMavenTutorial Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  
+	<scm>
+	  <developerConnection>scm:git:git@github.com:pratikghodekar/CrunchifyMavenTutorial.git</developerConnection>
+	  <tag>HEAD</tag>
+	</scm>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -40,6 +46,14 @@
 					</goals>
 				</execution>
 			</executions>
+		</plugin>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-release-plugin</artifactId>
+			<version>2.5.3</version>
+			<configuration>
+				<tagNameFormat>v@{project.version}</tagNameFormat>
+			</configuration>
 		</plugin>
 	  </plugins>
   </build>
