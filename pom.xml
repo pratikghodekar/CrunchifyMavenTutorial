@@ -9,7 +9,7 @@
   <url>http://maven.apache.org</url>
   
 	<scm>
-	  <developerConnection>scm:git:pratikghodekar@github.com:pratikghodekar/CrunchifyMavenTutorial.git</developerConnection>
+	  <developerConnection>scm:git:git@github.com:pratikghodekar/CrunchifyMavenTutorial.git</developerConnection>
 	  <tag>HEAD</tag>
 	</scm>
 
