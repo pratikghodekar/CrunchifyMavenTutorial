@@ -3,7 +3,7 @@
   <groupId>com.crunchify</groupId>
   <artifactId>CrunchifyMavenTutorial</artifactId>
   <packaging>war</packaging>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>0.0.3-SNAPSHOT</version>
   <name>CrunchifyMavenTutorial Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
