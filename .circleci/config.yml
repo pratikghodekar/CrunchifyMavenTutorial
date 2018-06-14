@@ -40,7 +40,10 @@ jobs:
       # run tests!
       - run: mvn integration-test
       
-      - run: |           
-            if [[ $GIT_USER_EMAIL ]]; then git config --global user.email "$GIT_USER_EMAIL" ; fi
-            if [[ $GIT_USER_NAME ]]; then git config --global user.name "$GIT_USER_NAME" ; fi
-            if [[ $RELEASE ]]; then mvn -B release:prepare ; fi
+      - run: |
+            if [[ "$CIRCLE_BRANCH" = "master" ]]
+            then
+                if [[ $GIT_USER_EMAIL ]]; then git config --global user.email "$GIT_USER_EMAIL" ; fi
+                if [[ $GIT_USER_NAME ]]; then git config --global user.name "$GIT_USER_NAME" ; fi
+                if [[ $RELEASE ]]; then mvn -B release:prepare ; fi
+            fi
