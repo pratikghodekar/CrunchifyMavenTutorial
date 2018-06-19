@@ -14,7 +14,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
 
-    working_directory: ~/repo
+    working_directory: ~/build
 
     environment:
       # Customize the JVM maximum heap limit
@@ -47,3 +47,13 @@ jobs:
                 if [[ $GIT_USER_NAME ]]; then git config --global user.name "$GIT_USER_NAME" ; fi
                 if [[ $RELEASE ]]; then mvn -B release:prepare release:perform ; fi
             fi
+            
+  deploy:
+    working_directory: ~/deploy
+    docker:
+      - image: ansible/ansible:ubuntu1604
+    steps:
+      # Installation
+      - run:
+          name: Clone git repo
+          command: git clone git@github.com:pratik-ansible/backend-server.git
