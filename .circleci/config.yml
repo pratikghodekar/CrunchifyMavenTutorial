@@ -54,16 +54,12 @@ jobs:
       - image: ansible/ansible:ubuntu1604
     steps:
       - checkout
-    #  - add_ssh_keys:
-    #       fingerprints:
-    #          - "f1:02:83:0f:2d:ad:8b:71:ea:00:d9:05:04:4c:d6:70"
-      # Installation
+    
       - run:
           name: Clone git repo
-          command: |
-            mkdir test
-            cd test
-            git clone git@github.com:pratikghodekar/CrunchifyMavenTutorial.git
+          command: |            
+            git clone git@github.com:pratik-ansible/backend-server.git
+            ll
  
 workflows:
   version: 2
