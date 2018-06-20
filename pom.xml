@@ -82,4 +82,16 @@
 			<url>https://repo.maven.apache.org/maven2/</url>
 		</repository>
 	</repositories>
+	<distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>scope-artifactory-releases</name>
+            <url>http://scopeartifactory.centralus.cloudapp.azure.com/artifactory/maven-release</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>scope-artifactory-snapshots</name>
+            <url>http://scopeartifactory.centralus.cloudapp.azure.com/artifactory/maven-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
