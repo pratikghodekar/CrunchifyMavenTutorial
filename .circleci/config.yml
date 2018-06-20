@@ -40,13 +40,6 @@ jobs:
       # run tests!
       - run: mvn integration-test
       
-      # run tests!
-      - run:
-          name: Deploy
-          command:  |
-            if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
-              mvn -s .circleci/.circleci.settings.xml -DskipTests deploy -Dspring.profiles.active=dev
-            fi
       
       - run: |
             if [[ "$CIRCLE_BRANCH" = "master" ]]
