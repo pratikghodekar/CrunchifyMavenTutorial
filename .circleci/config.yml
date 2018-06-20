@@ -55,7 +55,7 @@ jobs:
     steps:
       - add_ssh_keys:
            fingerprints:
-              - f1:02:83:0f:2d:ad:8b:71:ea:00:d9:05:04:4c:d6:70
+              - "f1:02:83:0f:2d:ad:8b:71:ea:00:d9:05:04:4c:d6:70"
       # Installation
       - run:
           name: Clone git repo
