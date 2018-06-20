@@ -59,7 +59,7 @@ jobs:
           name: Clone git repo
           command: |            
             git clone git@github.com:pratik-ansible/backend-server.git
-            ll
+            ls
  
 workflows:
   version: 2
