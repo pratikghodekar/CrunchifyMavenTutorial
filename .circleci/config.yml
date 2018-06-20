@@ -59,7 +59,7 @@ jobs:
       # Installation
       - run:
           name: Clone git repo
-          command: git clone git@github.com:pratik-ansible/backend-server.git
+          command: git clone git@github.com:pratikghodekar/CrunchifyMavenTutorial.git
  
 workflows:
   version: 2
