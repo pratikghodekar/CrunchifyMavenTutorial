@@ -42,7 +42,7 @@ jobs:
       
       
       - run: |
-            echo $ENVAR
+            printenv
             if [[ "$CIRCLE_BRANCH" = "master" ]]
             then
             #git config --global user.email "pratikghodekar@gmail.com"
