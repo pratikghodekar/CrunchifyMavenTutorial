@@ -43,6 +43,8 @@ jobs:
       - run: |
             if [[ "$CIRCLE_BRANCH" = "master" ]]
             then
+                git config --global user.email "pratikghodekar@gmail.com"
+                git config --global user.name "pratikghodekar" 
                 mvn -B release:prepare release:perform
             fi
 
