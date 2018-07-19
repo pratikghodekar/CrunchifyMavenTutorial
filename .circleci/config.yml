@@ -42,6 +42,7 @@ jobs:
       
       
       - run: |
+            printenv
             if [[ "$CIRCLE_BRANCH" = "master" ]]
             then
             #git config --global user.email "pratikghodekar@gmail.com"
