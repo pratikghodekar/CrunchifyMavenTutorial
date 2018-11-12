@@ -25,7 +25,9 @@ jobs:
 
       - run: |
            text=`git log test --not origin/master --pretty=oneline`
-           echo $text
+           while read -r line; do
+               echo "... $line ..."
+           done <<< "$text"
 
       # Download and cache dependencies
       - restore_cache:
