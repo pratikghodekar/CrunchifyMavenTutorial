@@ -23,6 +23,8 @@ jobs:
     steps:
       - checkout
 
+      - run: git cherry -v master test
+
       # Download and cache dependencies
       - restore_cache:
           keys:
