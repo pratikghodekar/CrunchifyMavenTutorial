@@ -24,8 +24,7 @@ jobs:
       - checkout
 
       - run: |
-           git checkout test
-           text=`git log master..`
+           text=`git log test --not origin/master --pretty=oneline`
            echo $text
 
       # Download and cache dependencies
