@@ -1,0 +1,7 @@
+{ 
+   "build_parameters": { 
+		         "RELEASE": "Yes",		         
+		         "GIT_USER_EMAIL": "pratikghodekar@gmail.com", 
+		         "GIT_USER_NAME": "Via CircleCI" 
+		       }
+}
