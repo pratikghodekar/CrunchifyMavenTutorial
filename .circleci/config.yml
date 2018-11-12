@@ -24,9 +24,7 @@ jobs:
       - checkout
 
       - run: |
-           git log master.. > a.txt
-           cat a.txt
-
+           git log 
 
       # Download and cache dependencies
       - restore_cache:
