@@ -24,7 +24,8 @@ jobs:
       - checkout
 
       - run: |
-           git log 
+           text=`git log master..`
+           echo $text
 
       # Download and cache dependencies
       - restore_cache:
