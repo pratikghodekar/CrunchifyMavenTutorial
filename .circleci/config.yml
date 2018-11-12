@@ -30,7 +30,7 @@ jobs:
                then
                    echo "" > /dev/null
                else
-                   echo "No Jira id found for one of the commits"
+                   echo "No Jira id found for atleast one of the commits"
                    exit 1
                fi
            done <<< "$text"
