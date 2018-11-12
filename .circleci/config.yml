@@ -24,6 +24,7 @@ jobs:
       - checkout
 
       - run: |
+           git checkout test
            text=`git log master..`
            echo $text
 
