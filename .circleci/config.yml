@@ -24,8 +24,8 @@ jobs:
       - checkout
 
       - run: |
-            git status
-            git cherry -v master test
+           git log master..
+
 
       # Download and cache dependencies
       - restore_cache:
