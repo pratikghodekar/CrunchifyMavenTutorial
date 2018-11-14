@@ -8,6 +8,7 @@
   <url>http://maven.apache.org</url>
   
 	<scm>
+	  <connection>scm:git:git@github.com:pratikghodekar/CrunchifyMavenTutorial.git</connection>
 	  <developerConnection>scm:git:git@github.com:pratikghodekar/CrunchifyMavenTutorial.git</developerConnection>
 	  <tag>HEAD</tag>
 	</scm>
@@ -54,8 +55,36 @@
 				<scmCommentPrefix>[skip ci]</scmCommentPrefix>
 			</configuration>
 		</plugin>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-site-plugin</artifactId>
+			<version>3.7.1</version>
+		</plugin>
 	  </plugins>
-  </build>   
+  </build>  
+	<reporting>
+		<plugins>		  
+		  <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-changelog-plugin</artifactId>
+			<version>2.3</version>
+			<configuration>
+			  <type>tag</type>
+			  <tags>
+				<tag implementation="java.lang.String">v0.0.23</tag>
+				<tag implementation="java.lang.String">CrunchifyMavenTutorial-0.0.25</tag>
+			  </tags>
+			</configuration>
+		  </plugin>
+		</plugins>
+	  </reporting> 
+	<repositories>		
+		<repository>
+			<id>maven-central</id>
+			<name>maven</name>
+			<url>https://repo.maven.apache.org/maven2/</url>
+		</repository>
+	</repositories>
   <distributionManagement>
 	<repository>
 	<id>central</id>
