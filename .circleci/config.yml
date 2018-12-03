@@ -24,19 +24,21 @@ jobs:
       - checkout
 
       - run: |
-            text=`git log $CIRCLE_BRANCH --not origin/master --pretty=oneline`
-            while read -r line; do
-                output=`echo $line|grep -i "scoop-[0-9]"`
-                if [[ $output ]]
-                then
-                    echo "" > /dev/null
-                else
-                    echo $line
-                    echo "No Jira id found for atleast one of the commits"
-                    exit 1
-                fi
-            done <<< "$text"
-
+            if [[ "$CIRCLE_BRANCH" != "master" ]]
+            then
+                text=`git log $CIRCLE_BRANCH --not origin/master --pretty=oneline`
+                while read -r line; do
+                    output=`echo $line|grep -i "scoop-[0-9]\|[skip ci]\|[maven-release-plugin]"`
+                    if [[ $output ]]
+                    then
+                        echo "" > /dev/null
+                    else
+                        echo $line
+                        echo "No Jira id found for atleast one of the commits"
+                        exit 1
+                    fi
+                done <<< "$text"
+            fi
       
       # Download and cache dependencies
       - restore_cache:
@@ -56,12 +58,38 @@ jobs:
       - run: mvn integration-test
       
       
-      - run: |
+      - run: |            
             if [[ "$CIRCLE_BRANCH" = "master" ]]
             then
-               git config --global user.email "pratikghodekar@gmail.com"
-               git config --global user.name "pratikghodekar" 
-               mvn -s .circleci/.circleci.settings.xml -B release:prepare release:perform
+                git config --global user.email "pratikghodekar@gmail.com"
+                git config --global user.name "pratikghodekar" 
+                mvn -s .circleci/.circleci.settings.xml -B release:prepare release:perform
+
+                tag2=`git tag --sort=-creatordate|head -n1`
+                tag1=`git tag --sort=-creatordate|head -n2|tail -n1`
+
+                if [[ $? ]]
+                then
+                    content=`git log --pretty=oneline $tag1..$tag2|grep -oi "scoop-[0-9]*"|uniq`
+                    version=`echo $tag2|grep -io "\([0-9]\+\([.][0-9]\+\)\+\)"`
+                else
+                    content=`git log --pretty=oneline $tag1|grep -oi "scoop-[0-9]*"|uniq`
+                    version=`echo $tag1|grep -io "\([0-9]\+\([.][0-9]\+\)\+\)"`
+                fi
+
+                if [[ -f changes.txt ]]
+                then
+                   touch changes.txt
+                fi
+
+                echo $version > latests.txt
+                echo $content > content.txt
+                sed -e 's/^/\* /' content.txt >> latests.txt
+                
+                cat latests.txt changes.txt > changes.txt
+                git add changes.txt
+                git commit -m "[skip ci] changes.txt updated"
+                git push
             fi
 
   deploy:
