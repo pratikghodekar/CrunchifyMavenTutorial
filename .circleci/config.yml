@@ -72,7 +72,7 @@ jobs:
                 tag1=`git tag --sort=-creatordate|head -n2|tail -n1`
                 echo 3 > a.txt
                 
-                if [[ $? ]]
+                if [[ tag2 != tag1 ]]
                 then
                     content=`git log --pretty=oneline $tag1..$tag2|grep -oi "scoop-[0-9]*"|uniq`
                     echo 4 > a.txt
