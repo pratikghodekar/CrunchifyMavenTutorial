@@ -101,7 +101,8 @@ jobs:
                 sed -e 's/^/\* /' content.txt >> latests.txt
                 echo 10 > a.txt
                 
-                cat latests.txt changes.txt > changes.txt
+                cat latests.txt changes.txt > new_changes.txt
+                cat new_changes.txt > changes.txt
                 echo 11 > a.txt
                 git add changes.txt
                 echo 12 > a.txt
