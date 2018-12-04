@@ -97,7 +97,7 @@ jobs:
 
                 echo $version > latests.txt                
                 echo 9 > a.txt
-                sed -e 's/^/\* /' content.txt >> latests.txt
+                sed -e 's/^/ \* /' content.txt >> latests.txt
                 echo 10 > a.txt
                 
                 cat latests.txt changes.txt > new_changes.txt
