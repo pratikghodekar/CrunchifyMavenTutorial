@@ -107,7 +107,7 @@ jobs:
                 echo 12 > a.txt
                 git commit -m "[skip ci] changes.txt updated"
                 echo 13 > a.txt
-                #git push
+                git push
                 echo 14 > a.txt
             fi
 
