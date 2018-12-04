@@ -76,14 +76,14 @@ jobs:
                 then
                     echo 3.1 > a.txt
                     echo "$tag2 $tag1" >> a.txt
-                    content=`git log --pretty=oneline $tag1..$tag2|grep -oi "scoop-[0-9]*"|uniq`
+                    content=`git log --pretty=oneline $tag1..$tag2|grep -oi "scoop-[0-9]*"| tr '[:lower:]' '[:upper:]'| sort | uniq`
                     echo 4 > a.txt
                     version=`echo $tag2|grep -io "\([0-9]\+\([.][0-9]\+\)\+\)"`
                     echo 5 > a.txt
                 else
                     echo 5.1 > a.txt
                     echo "$tag2 $tag1" >> a.txt
-                    content=`git log --pretty=oneline $tag1|grep -oi "scoop-[0-9]*"|uniq`
+                    content=`git log --pretty=oneline $tag1|grep -oi "scoop-[0-9]*"| tr '[:lower:]' '[:upper:]'| sort | uniq`
                     echo 6 > a.txt
                     version=`echo $tag1|grep -io "\([0-9]\+\([.][0-9]\+\)\+\)"`
                     echo 7 > a.txt
@@ -108,7 +108,7 @@ jobs:
                 echo 12 > a.txt
                 git commit -m "[skip ci] changes.txt updated"
                 echo 13 > a.txt
-                #git push
+                git push
                 echo 14 > a.txt
             fi
 
