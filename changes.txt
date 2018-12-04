@@ -1,3 +1,10 @@
+0.0.29
+ * SCOOP-11
+ * SCOOP-12
+ * SCOOP-13
+ * SCOOP-4
+ * SCOOP-5
+ * SCOOP-6
 0.0.28
  * SCOOP-0
  * SCOOP-1
