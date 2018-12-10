@@ -63,52 +63,33 @@ jobs:
             then
                 git config --global user.email "pratikghodekar@gmail.com"
                 git config --global user.name "pratikghodekar" 
-                #mvn -s .circleci/.circleci.settings.xml -B release:prepare release:perform
-                
-                echo 1 > a.txt
+                mvn -s .circleci/.circleci.settings.xml -B release:prepare release:perform
 
                 tag2=`git tag --sort=-creatordate|head -n1`
-                echo 2 > a.txt
                 tag1=`git tag --sort=-creatordate|head -n2|tail -n1`
-                echo 3 > a.txt
                 
                 if [[ $tag2 != $tag1 ]]
                 then
-                    echo 3.1 > a.txt
-                    echo "$tag2 $tag1" >> a.txt
                     git log --pretty=oneline $tag1..$tag2|grep -oi "scoop-[0-9]*"| tr '[:lower:]' '[:upper:]'| sort | uniq > content.txt
-                    echo 4 > a.txt
-                    version=`echo $tag2|grep -io "\([0-9]\+\([.][0-9]\+\)\+\)"`
-                    echo 5 > a.txt
                 else
-                    echo 5.1 > a.txt
-                    echo "$tag2 $tag1" >> a.txt
                     git log --pretty=oneline $tag1|grep -oi "scoop-[0-9]*"| tr '[:lower:]' '[:upper:]'| sort | uniq > content.txt
-                    echo 6 > a.txt
-                    version=`echo $tag1|grep -io "\([0-9]\+\([.][0-9]\+\)\+\)"`
-                    echo 7 > a.txt
                 fi
+                version=`echo $tag2|grep -io "\([0-9]\+\([.][0-9]\+\)\+\)"`
 
-                if [[ -f changes.txt ]]
+                if [[ ! -f changes.txt ]]
                 then
                    touch changes.txt
-                   echo 8 > a.txt
                 fi
 
-                echo $version > latests.txt                
-                echo 9 > a.txt
+                echo $version > latests.txt
                 sed -e 's/^/ \* /' content.txt >> latests.txt
-                echo 10 > a.txt
                 
                 cat latests.txt changes.txt > new_changes.txt
+                echo "" >> new_changes.txt
                 cat new_changes.txt > changes.txt
-                echo 11 > a.txt
-                git add changes.txt
-                echo 12 > a.txt
+                git add changes.txt  
                 git commit -m "[skip ci] changes.txt updated"
-                echo 13 > a.txt
                 git push
-                echo 14 > a.txt
             fi
 
   deploy:
