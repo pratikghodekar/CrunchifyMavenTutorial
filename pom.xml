@@ -3,14 +3,14 @@
   <groupId>com.crunchify</groupId>
   <artifactId>CrunchifyMavenTutorial</artifactId>
   <packaging>war</packaging>
-  <version>0.0.30</version>
+  <version>0.0.31-SNAPSHOT</version>
   <name>CrunchifyMavenTutorial Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
 	<scm>
 	  <connection>scm:git:git@github.com:pratikghodekar/CrunchifyMavenTutorial.git</connection>
 	  <developerConnection>scm:git:git@github.com:pratikghodekar/CrunchifyMavenTutorial.git</developerConnection>
-	  <tag>CrunchifyMavenTutorial-0.0.30</tag>
+	  <tag>HEAD</tag>
 	</scm>
 
   <dependencies>
