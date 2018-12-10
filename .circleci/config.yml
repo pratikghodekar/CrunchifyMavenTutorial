@@ -76,7 +76,7 @@ jobs:
                 fi
                 version=`echo $tag2|grep -io "\([0-9]\+\([.][0-9]\+\)\+\)"`
 
-                if [[ -f changes.txt ]]
+                if [[ ! -f changes.txt ]]
                 then
                    touch changes.txt
                 fi
