@@ -1,3 +1,16 @@
+0.0.31
+ * SCOOP-0: null (null)
+ * SCOOP-1: This epic is for collection of different types of orders and ingesting them into the order management system for further processing.  (To Do)
+ * SCOOP-10: This epic is to create and maintain order schedules in OMS. (To Do)
+ * SCOOP-101: Pallet round rules creation - Supplier Item Level (Done)
+ * SCOOP-11: This epic encompasses features corresponding to the various interfaces offered by OMS for different types of users to interact with the system for viewing/managing the data in OMS. (To Do)
+ * SCOOP-12: This epic is for generating order related reporting from OMS. Reports shall be exportable in xls & pdf formats.  (To Do)
+ * SCOOP-1234: Defect Retesting (Done)
+ * SCOOP-13: This epic is to generate alerts and send notifications from OMS. (To Do)
+ * SCOOP-2: This epic is for receiving and storing ABS’s key business objects in OMS. This data can be used for order validations and enrichment. (To Do)
+ * SCOOP-4: This epic is to enrich the orders with additional details from other systems as needed.  (To Do)
+ * SCOOP-5: This epic is to create, update and view(search/filter) the orders. (To Do)
+ * SCOOP-6:  This epic is to control the orders at various phases of order life cycle.  (To Do)
 0.0.30
  * SCOOP-1
  * SCOOP-13
@@ -14,5 +27,6 @@
  * SCOOP-10
  * SCOOP-101
  * SCOOP-2
+
 
 
