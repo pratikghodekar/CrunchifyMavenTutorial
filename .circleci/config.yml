@@ -61,35 +61,45 @@ jobs:
       - run: |            
             if [[ "$CIRCLE_BRANCH" = "master" ]]
             then
-                git config --global user.email "pratikghodekar@gmail.com"
-                git config --global user.name "pratikghodekar" 
-                mvn -s .circleci/.circleci.settings.xml -B release:prepare release:perform
+                tag=`git tag --sort=-creatordate|head -n1`
+                # tag1=`git tag --sort=-creatordate|head -n2|tail -n1`
+                count=`git tag|wc -l`
 
-                tag2=`git tag --sort=-creatordate|head -n1`
-                tag1=`git tag --sort=-creatordate|head -n2|tail -n1`
-                
-                if [[ $tag2 != $tag1 ]]
+                if [[ $count -ne 0 ]]
                 then
-                    git log --pretty=oneline $tag1..$tag2|grep -oi "scoop-[0-9]*"| tr '[:lower:]' '[:upper:]'| sort | uniq > content.txt
+                    git log --pretty=oneline $tag..master --no-merges|grep -oi "scoop-[0-9]*"| tr '[:lower:]' '[:upper:]'| sort | uniq > content.txt
                 else
-                    git log --pretty=oneline $tag1|grep -oi "scoop-[0-9]*"| tr '[:lower:]' '[:upper:]'| sort | uniq > content.txt
+                    git log --pretty=oneline master --no-merges|grep -oi "scoop-[0-9]*"| tr '[:lower:]' '[:upper:]'| sort | uniq > content.txt
                 fi
-                version=`echo $tag2|grep -io "\([0-9]\+\([.][0-9]\+\)\+\)"`
+                version=`mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version| sed -n -e '/^\[.*\]/ !{ /^[0-9]/ { p; q } }'| sed -e 's/[^0-9][^0-9]*$//'`
 
                 if [[ ! -f changes.txt ]]
                 then
                    touch changes.txt
                 fi
+                
+                while read -r line; do
+                  #echo $line
+                  curl  -X GET -H "Authorization: Basic cHJhdGlrZ0B4cGFueGlvbi5jby5pbjpKYW4xMjM0NUAyMDE4" \
+                  -H "Content-Type: application/json" "https://scoperetail.atlassian.net/rest/api/2/issue/$line?fields=summary,status" -o jira.json -s
+                  summary=`cat jira.json|jq '.fields.summary'|cut -d "\"" -f 2`
+                  status=`cat jira.json|jq '.fields.status.name'|cut -d "\"" -f 2`
+                  echo "$line: $summary ($status)" >> jira.txt
+                done <<< $(<content.txt)
 
                 echo $version > latests.txt
-                sed -e 's/^/ \* /' content.txt >> latests.txt
-                
+                sed -e 's/^/ \* /' jira.txt >> latests.txt
+
                 cat latests.txt changes.txt > new_changes.txt
                 echo "" >> new_changes.txt
                 cat new_changes.txt > changes.txt
-                git add changes.txt  
+                git add changes.txt
                 git commit -m "[skip ci] changes.txt updated"
                 git push
+                        
+                git config --global user.email "pratikghodekar@gmail.com"
+                git config --global user.name "pratikghodekar" 
+                mvn -s .circleci/.circleci.settings.xml -B release:prepare release:perform                
             fi
 
   deploy:
