@@ -1,3 +1,5 @@
+0.0.32
+ * SCOOP-123: [TECHNICAL] Order Type API design and implementation (Done)
 0.0.31
  * SCOOP-0: null (null)
  * SCOOP-1: This epic is for collection of different types of orders and ingesting them into the order management system for further processing.  (To Do)
@@ -27,6 +29,7 @@
  * SCOOP-10
  * SCOOP-101
  * SCOOP-2
+
 
 
 
