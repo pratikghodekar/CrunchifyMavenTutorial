@@ -61,6 +61,9 @@ jobs:
       - run: |            
             if [[ "$CIRCLE_BRANCH" = "master" ]]
             then
+                git config --global user.email "pratikghodekar@gmail.com"
+                git config --global user.name "pratikghodekar"
+                
                 tag=`git tag --sort=-creatordate|head -n1`
                 # tag1=`git tag --sort=-creatordate|head -n2|tail -n1`
                 count=`git tag|wc -l`
@@ -96,9 +99,7 @@ jobs:
                 git add changes.txt
                 git commit -m "[skip ci] changes.txt updated"
                 git push
-                        
-                git config --global user.email "pratikghodekar@gmail.com"
-                git config --global user.name "pratikghodekar" 
+                                       
                 mvn -s .circleci/.circleci.settings.xml -B release:prepare release:perform                
             fi
 
