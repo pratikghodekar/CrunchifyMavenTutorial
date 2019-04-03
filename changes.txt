@@ -1,3 +1,5 @@
+0.0.33
+ * SCOOP-111: Router role creation (Invalid)
 0.0.32
  * SCOOP-123: [TECHNICAL] Order Type API design and implementation (Done)
 0.0.31
@@ -29,6 +31,7 @@
  * SCOOP-10
  * SCOOP-101
  * SCOOP-2
+
 
 
 
