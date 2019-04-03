@@ -103,7 +103,7 @@ jobs:
                 mvn -s .circleci/.circleci.settings.xml -B release:prepare
                 tag=`git tag --sort=-creatordate|head -n1`
                 git checkout $tag -f
-                mvn clean deploy
+                mvn -s .circleci/.circleci.settings.xml clean deploy
             fi
 
   deploy:
